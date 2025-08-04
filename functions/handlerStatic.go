@@ -7,7 +7,7 @@ import (
 )
 
 // handler static folder
-func HandleStatic(w http.ResponseWriter, r *http.Request) {
+func HandlerStatic(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		HandlerError(w, "Method not allowed !", http.StatusMethodNotAllowed)
 		return

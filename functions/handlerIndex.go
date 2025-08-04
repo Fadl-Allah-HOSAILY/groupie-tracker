@@ -8,7 +8,7 @@ import (
 func HandlerIndex(w http.ResponseWriter, r *http.Request) {
 	data, err := LoadAllData()
 	if err != nil {
-		http.Error(w, "Erreur lors du chargement des données", http.StatusInternalServerError)
+		HandlerError(w, "Erreur lors du chargement des données", http.StatusInternalServerError)
 		return
 	}
 
@@ -20,7 +20,7 @@ func HandlerIndex(w http.ResponseWriter, r *http.Request) {
 
 	err = tmpl.Execute(w, data)
 	if err != nil {
-		http.Error(w, "Erreur d'affichage du template", http.StatusInternalServerError)
+		HandlerError(w, "Erreur d'affichage du template", http.StatusInternalServerError)
 		return
 	}
 }

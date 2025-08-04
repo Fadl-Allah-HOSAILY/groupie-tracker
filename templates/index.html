@@ -10,16 +10,13 @@
     <h1>🎵 Groupie Tracker — List of Artists</h1>
 
     <div class="artist-grid">
-        {{range .Artists}}
-        <div class="artist-card">
-            <img class="artist-img" src="{{.Image}}" alt="Image of {{.Name}}">
-            <div class="artist-name">{{.Name}}</div>
-            <div class="artist-date">Formed in {{.CreationDate}} — First album: {{.FirstAlbum}}</div>
-            <div class="members">
-                Members:
-                {{range .Members}}{{.}}, {{end}}
+        {{range .}}
+        <a href="/artist/{{ .Id }}">
+            <div class="artist-card">
+                <img class="artist-img" src="{{.Image}}" alt="Image of {{.Name}}">
+                <div class="artist-name">{{.Name}}</div>
             </div>
-        </div>
+        </a>
         {{end}}
     </div>
 

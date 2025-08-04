@@ -5,13 +5,22 @@ import (
 	"log"
 	"net/http"
 
-	"groupieTracker/functions"
+	fn "groupieTracker/functions"
 )
+
+func init() {
+	AllArtists, err := fn.LoadAllData()
+	if err != nil {
+		log.Fatal("Server error:", err)
+	}
+	fmt.Print(AllArtists)
+}
 
 func main() {
 	// Route handlers
-	http.HandleFunc("/", functions.HandlerIndex)
-	http.HandleFunc("/static/", functions.HandleStatic)
+	http.HandleFunc("/", fn.HandlerIndex)
+	http.HandleFunc("/static/", fn.HandlerStatic)
+	http.HandleFunc("/artist/", fn.HandlerArtist)
 
 	// Start server
 	fmt.Println("Server running on: http://localhost:8080")
