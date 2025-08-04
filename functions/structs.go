@@ -34,3 +34,10 @@ type RelationData struct {
 type RelationResponse struct {
     Index []RelationData `json:"index"`
 }
+
+type AllData struct {
+    Artists   []Artist
+    Locations LocationsResponse
+    Dates     DatesResponse
+    Relation  RelationResponse
+}

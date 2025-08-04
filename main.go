@@ -3,37 +3,20 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 
 	"groupieTracker/functions"
 )
 
 func main() {
-	var artists []functions.Artist
-	err := functions.FetchJSON("https://groupietrackers.herokuapp.com/api/artists", &artists)
-	if err != nil {
-		log.Fatal("Erreur artists:", err)
-	}
+	// Route handlers
+	http.HandleFunc("/", functions.HandlerIndex)
+	http.HandleFunc("/static/", functions.HandleStatic)
 
-	var locations functions.LocationsResponse
-	err = functions.FetchJSON("https://groupietrackers.herokuapp.com/api/locations", &locations)
+	// Start server
+	fmt.Println("Server running on: http://localhost:8080")
+	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
-		log.Fatal("Erreur locations:", err)
+		log.Fatal("Server error:", err)
 	}
-
-	var dates functions.DatesResponse
-	err = functions.FetchJSON("https://groupietrackers.herokuapp.com/api/dates", &dates)
-	if err != nil {
-		log.Fatal("Erreur dates:", err)
-	}
-
-	var relation functions.RelationResponse
-	err = functions.FetchJSON("https://groupietrackers.herokuapp.com/api/relation", &relation)
-	if err != nil {
-		log.Fatal("Erreur relation:", err)
-	}
-
-	fmt.Println("Nom du 1er artiste :", artists[0].Name)
-	fmt.Println("Lieu du 1er artiste :", locations.Index[0].Locations)
-	fmt.Println("Dates du 1er artiste :", dates.Index[0].Dates)
-	fmt.Println("Dates+lieux relation :", relation.Index[0].DatesLocations)
 }
