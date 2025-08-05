@@ -1,13 +1,13 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #22313f;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #f4f4f4;
 }
 
 .artist-grid {
@@ -16,7 +16,7 @@ h1 {
     margin-top: 30px;
 }
 
-.artist-card {
+/* .artist-card {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -28,6 +28,39 @@ h1 {
 
 .artist-card:hover {
     transform: translateY(-5px);
+} */
+
+
+.artist-card {
+    position: relative; /* important pour le pseudo-élément */
+    background-color: #182129;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(144, 71, 240, 0.726);
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+    overflow: hidden; /* pour cacher ce qui dépasse */
+}
+
+.artist-card::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, transparent, rgba(144, 71, 240, 0.8), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    pointer-events: none;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+}
+
+.artist-card:hover::before {
+    transform: translateX(100%);
+    transition: transform 1s ease;
 }
 
 .artist-img {
@@ -40,18 +73,10 @@ h1 {
 .artist-name {
     font-size: 1.3em;
     margin: 10px 0;
-    color: #34495e;
+    color: #7293b4;
 }
-
-.artist-date {
-    color: #7f8c8d;
-    font-size: 0.9em;
-}
-
-.members {
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #2d3436;
+a {
+    text-decoration: none;
 }
 
 @media (max-width: 1200px) {
@@ -70,4 +95,17 @@ h1 {
     .artist-grid {
         grid-template-columns: 1fr;
     }
+}
+.artist-card {
+    background-color: #182129;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(144, 71, 240, 0.726);
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
 }

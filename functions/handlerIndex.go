@@ -6,7 +6,11 @@ import (
 )
 
 func HandlerIndex(w http.ResponseWriter, r *http.Request) {
-	data, err := LoadAllData()
+	if r.URL.Path != "/" {
+		HandlerError(w, "Error, page not found", http.StatusNotFound)
+		return
+	}
+	AllArtists, err := LoadAllData()
 	if err != nil {
 		HandlerError(w, "Erreur lors du chargement des données", http.StatusInternalServerError)
 		return
@@ -18,7 +22,7 @@ func HandlerIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = tmpl.Execute(w, data)
+	err = tmpl.Execute(w, AllArtists)
 	if err != nil {
 		HandlerError(w, "Erreur d'affichage du template", http.StatusInternalServerError)
 		return

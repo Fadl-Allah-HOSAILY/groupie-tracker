@@ -7,10 +7,36 @@
 </head>
 <body>
     <h1>{{.Name}}</h1>
-    <img src="{{.Image}}" alt="{{.Name}}"/>
-    <p>Created: {{.CreationDate}}</p>
-    <p>First Album: {{.FirstAlbum}}</p>
-    <p>Members: {{range .Members}}{{.}}, {{end}}</p>
+    <img src="{{.Image}}" alt="{{.Name}}" />
+
+    <p><strong>Created:</strong> {{.CreationDate}}</p>
+    <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+
+    <p><strong>Members:</strong>
+        {{range $index, $member := .Members}}
+            {{if $index}}, {{end}}{{ $member }}
+        {{end}}
+    </p>
+
+    <h2>Locations</h2>
+    {{range $key, $value := .Locations.Locations}}
+        <p>{{ $value }}</p>
+    {{end}}
+
+    <h2>Dates</h2>
+    {{range $key, $value := .Dates.Dates}}
+        <p>{{ $value }}</p>
+    {{end}}
+
+    <h2>Tour Dates by Location</h2>
+    {{range $location, $dates := .DatesLocations.DatesLocations}}
+        <p><strong>{{ $location }}</strong>:</p>
+        <ul>
+            {{range $dates}}
+                <li>{{.}}</li>
+            {{end}}
+        </ul>
+    {{end}}
 
     <p><a href="/">← Back to artists</a></p>
 </body>

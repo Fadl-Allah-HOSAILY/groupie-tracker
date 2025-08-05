@@ -8,13 +8,6 @@ import (
 	fn "groupieTracker/functions"
 )
 
-func init() {
-	AllArtists, err := fn.LoadAllData()
-	if err != nil {
-		log.Fatal("Server error:", err)
-	}
-	fmt.Print(AllArtists)
-}
 
 func main() {
 	// Route handlers

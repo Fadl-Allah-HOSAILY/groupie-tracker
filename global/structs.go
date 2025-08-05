@@ -35,9 +35,8 @@ type AllData struct {
 	Members      []string
 	CreationDate int
 	FirstAlbum   string
-	Locations    []string
-	ConcertDate  []string
-	Relations    map[string][]string
+	Locations      Location
+	Dates          Date
+	DatesLocations Relations
 }
 
-var AllArtists []Artist 
