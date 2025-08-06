@@ -3,41 +3,52 @@
 <head>
     <meta charset="UTF-8" />
     <title>{{.Name}}</title>
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/artist.css" />
 </head>
 <body>
     <h1>{{.Name}}</h1>
-    <img src="{{.Image}}" alt="{{.Name}}" />
 
-    <p><strong>Created:</strong> {{.CreationDate}}</p>
-    <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+        <img src="{{.Image}}" alt="{{.Name}}" />
 
-    <p><strong>Members:</strong>
-        {{range $index, $member := .Members}}
-            {{if $index}}, {{end}}{{ $member }}
-        {{end}}
-    </p>
+    <div class="section-card">
+        <p><strong>Created:</strong> {{.CreationDate}}</p>
+        <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
 
-    <h2>Locations</h2>
-    {{range $key, $value := .Locations.Locations}}
-        <p>{{ $value }}</p>
-    {{end}}
-
-    <h2>Dates</h2>
-    {{range $key, $value := .Dates.Dates}}
-        <p>{{ $value }}</p>
-    {{end}}
-
-    <h2>Tour Dates by Location</h2>
-    {{range $location, $dates := .DatesLocations.DatesLocations}}
-        <p><strong>{{ $location }}</strong>:</p>
-        <ul>
-            {{range $dates}}
-                <li>{{.}}</li>
+        <p><strong>Members:</strong>
+            {{range $index, $member := .Members}}
+                {{if $index}}, {{end}}{{ $member }}
             {{end}}
-        </ul>
-    {{end}}
+        </p>
+    </div>
 
-    <p><a href="/">← Back to artists</a></p>
+    <div class="section-card">
+        <h2>Locations</h2>
+        {{range $key, $value := .Locations.Locations}}
+            <p>{{ $value }}</p>
+        {{end}}
+    </div>
+
+    <div class="section-card">
+        <h2>Dates</h2>
+        {{range $key, $value := .Dates.Dates}}
+            <p>{{ $value }}</p>
+        {{end}}
+    </div>
+
+    <div class="section-card">
+        <h2>Tour Dates by Location</h2>
+        {{range $location, $dates := .DatesLocations.DatesLocations}}
+            <p><strong>{{ $location }}</strong>:</p>
+            <ul>
+                {{range $dates}}
+                    <li>{{.}}</li>
+                {{end}}
+            </ul>
+        {{end}}
+    </div>
+
+    <div class="back-link">
+        <a href="/">← Back to artists</a>
+    </div>
 </body>
 </html>

@@ -15,22 +15,18 @@ func DetailsData(id string, w http.ResponseWriter) (gb.AllData, error) {
 
 	errArtist := FetchJSON("https://groupietrackers.herokuapp.com/api/artists/"+id, &artist)
 	if errArtist != nil {
-		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
 		return detail, errArtist
 	}
 	errLocation := FetchJSON("https://groupietrackers.herokuapp.com/api/locations/"+id, &location)
 	if errLocation != nil {
-		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
 		return detail, errLocation
 	}
 	errDate := FetchJSON("https://groupietrackers.herokuapp.com/api/dates/"+id, &date)
 	if errDate != nil {
-		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
 		return detail, errDate
 	}
 	errRelation := FetchJSON("https://groupietrackers.herokuapp.com/api/relation/"+id, &relation)
 	if errRelation != nil {
-		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
 		return detail, errLocation
 	}
 

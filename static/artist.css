@@ -1,0 +1,72 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #22313f;
+  color: #7293b4;
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #9047f0;
+  margin-bottom: 20px;
+}
+
+img {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(144, 71, 240, 0.5);
+}
+
+/* Encadrement général des sections */
+.section-card {
+  background-color: #182129;
+  border-radius: 12px;
+  padding: 25px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(144, 71, 240, 0.5);
+  max-width: 900px;
+}
+
+/* Ajustement des titres dans les blocs */
+.section-card h2 {
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
+/* Liste bien intégrée dans les blocs */
+.section-card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+/* Centrer le bouton de retour */
+.back-link {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Reprendre le bouton précédent */
+.back-link a {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 25px;
+  background-color: #9047f0;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(144, 71, 240, 0.7);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-link a:hover {
+  background-color: #b17fff;
+  box-shadow: 0 6px 25px rgba(144, 71, 240, 1);
+}

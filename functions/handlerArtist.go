@@ -10,7 +10,7 @@ func HandlerArtist(w http.ResponseWriter, r *http.Request) {
 	id := strings.Split(r.URL.Path, "/artist/")[1]
 	data, err := DetailsData(id, w)
 	if err != nil {
-		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
+		HandlerError(w, "Error, Bad Request", http.StatusBadRequest)
 		return
 	}
 
@@ -22,7 +22,7 @@ func HandlerArtist(w http.ResponseWriter, r *http.Request) {
 
 	err = tmpl.Execute(w, data)
 	if err != nil {
-		HandlerError(w, "Erreur d'affichage du template", http.StatusInternalServerError)
+		HandlerError(w, "Error, internal server error", http.StatusInternalServerError)
 		return
 	}
 }
